@@ -1,7 +1,29 @@
+<div class="jumbotron text-center">
+  <h1><span class="fa fa-list-ul"></span> YATD App</h1>
+</div>
+<div class="col-sm-6 col-sm-offset-3">
+
+<h1><span class="fa fa-sign-in"></span> Login</h1>
+
+{{#if loginErrorMessage}}
+  <div class="alert alert-danger">{{loginErrorMessage}}</div>
+{{/if}}
+
+<!-- LOGIN FORM -->
 <form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input id='identification' placeholder='Enter Login' value=identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
+  <div class="form-group">
+    <label for="identification">Email</label>
+    {{input class="form-control" id='identification' placeholder="Enter Email Address" value=identification}}
+  </div>
+  <div class="form-group">
+    <label for='password'>Password</label>
+    {{input class='form-control' id='password' placeholder='Enter Password' type='password' value=password}}
+  </div>
+
+  <button type="submit" class="btn btn-warning btn-lg">Login</button>
 </form>
+
+<hr>
+
+<p>Need an account? <a href="/signup">Signup</a></p>
+</div>

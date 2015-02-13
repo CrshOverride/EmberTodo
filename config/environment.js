@@ -21,6 +21,7 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:token',
+    routeAfterAuthentication: 'todo'
   };
 
   ENV['simple-auth-token'] = {
