@@ -5,11 +5,11 @@
 
 Ember.MODEL_FACTORY_INJECTIONS = true
 
-App = Ember.Application.extend({
+App = Ember.Application.extend(
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver: Resolver
-})
+)
 
 loadInitializers(App, config.modulePrefix)
 
