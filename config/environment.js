@@ -19,6 +19,23 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:token',
+  };
+
+  ENV['simple-auth-token'] = {
+    serverTokenEndpoint: 'http://angulartododemo.azurewebsites.net/authenticate',
+    identificationField: 'email',
+    passwordField: 'password'
+  }
+
+  ENV['contentSecurityPolicy'] = {
+    'connect-src': "'self' http://angulartododemo.azurewebsites.net",
+    'style-src': "'self' 'unsafe-inline'",
+    'img-src': "'self' data:",
+    'report-uri': '/content-security-policy/report',
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
