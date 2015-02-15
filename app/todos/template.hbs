@@ -1,0 +1,38 @@
+<!-- HEADER AND TODO COUNT -->
+<div class="jumbotron text-center">
+  <h1>
+    I'm a Todo-aholic <span class="label label-info">{{content.length}}</span>
+    {{#if session.isAuthenticated}}
+      <button class='btn btn-warning btn-lg' {{action 'invalidateSession'}}>Log Out</button>
+    {{/if}}
+  </h1>
+</div>
+
+<!-- TODO LIST -->
+<div id="todo-list" class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <!-- LOOP OVER THE TODOS IN $scope.todos -->
+    {{#each todo in content itemController='todo'}}
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value=todo {{action "delete"}}>{{todo.text}}
+        </label>
+      </div>
+    {{else}}
+      <div>You've got nothing to do...but relax!</div>
+    {{/each}}
+  </div>
+</div>
+
+<!-- FORM TO CREATE TODOS -->
+<div id="todo-form" class="row">
+  <div class="col-sm-8 col-sm-offset-2 text-center">
+    <form {{action 'add' on='submit'}}>
+      <div class="form-group">
+        {{input class='form-control input-lg text-center' placeholder='Write code (get back to work)?' value=new_todo}}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">Add</button>
+    </form>
+  </div>
+</div>
