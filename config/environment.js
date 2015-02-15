@@ -21,13 +21,17 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:token',
-    routeAfterAuthentication: 'todo'
+    routeAfterAuthentication: 'todo',
+    crossOriginWhitelist: ['http://angulartododemo.azurewebsites.net']
   };
 
   ENV['simple-auth-token'] = {
     serverTokenEndpoint: 'http://angulartododemo.azurewebsites.net/authenticate',
     identificationField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
+    tokenPropertyName: 'token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization'
   }
 
   ENV['contentSecurityPolicy'] = {

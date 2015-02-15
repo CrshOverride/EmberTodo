@@ -6,7 +6,7 @@ Router = Ember.Router.extend(
 )
 
 Router.map(->
-  @.route('todo', path: '/')
+  @.route('todos', path: '/')
   @.route('login')
 )
 
