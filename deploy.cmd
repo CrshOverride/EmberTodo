@@ -104,7 +104,7 @@ rmdir "D:\local\Temp\phantomjs"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.2 Execute npm install
-call :ExecuteCmd !NPM_CMD! install --production
+call :ExecuteCmd !NPM_CMD! install --no-bin-links --production
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 1. KuduSync
