@@ -123,6 +123,8 @@ echo Installing PhantomJS
 npm install -g phantomjs
 exitWithMessageOnError "phantomjs failed"
 
+node --version
+
 echo Ember Install Executing
 ember install
 exitWithMessageOnError "ember install failed"
