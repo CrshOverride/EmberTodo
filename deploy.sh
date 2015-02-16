@@ -101,6 +101,7 @@ selectNodeVersion () {
 NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
 NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
 EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
+BOWER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\bower\\bin\\bower\""
 
 echo Using node from: $NODE_EXE
 echo Using npm command: $NPM_CMD
@@ -122,9 +123,13 @@ echo Installing PhantomJS
 eval $NPM_CMD install phantomjs
 exitWithMessageOnError "phantomjs failed"
 
-echo Ember Install Executing
-eval $EMBER_CMD install
-exitWithMessageOnError "ember install failed"
+echo Npm Install Executing
+eval $NPM_CMD install
+exitWithMessageOnError "npm install failed"
+
+echo Bower Install Executing
+eval $BOWER_CMD install
+exitWithMessageOnError "bower install failed"
 
 echo Ember Build Executing
 eval $EMBER_BUILD_CMD build
