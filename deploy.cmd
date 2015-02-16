@@ -114,7 +114,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 echo 2. Building
 
 echo 2.1 Ember build
-call :ExecuteCmd !EMBER_CMD! build
+call :ExecuteCmd !EMBER_CMD! build --verbose
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 1. KuduSync
