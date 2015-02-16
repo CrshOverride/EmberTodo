@@ -18,6 +18,8 @@ SignupController = Ember.Controller.extend
 
       request
         .then(=> @transitionTo('login'))
-        .catch((reason) => @set('signup_error_message', reason))
+        .catch((reason) =>
+          @set('signup_error_message', reason.responseJSON.message.message)
+        )
 
 `export default SignupController`
