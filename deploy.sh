@@ -64,6 +64,8 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
+npm config set strict-ssl false
+
 echo Upgrading NPM
 npm install -g npm
 exitWithMessageOnError "npm failed"
