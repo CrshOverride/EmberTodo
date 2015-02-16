@@ -94,24 +94,6 @@ selectNodeVersion () {
   fi
 }
 
-#npm config set strict-ssl false
-
-# echo Installing Ember CLI
-# npm install -g ember-cli
-# exitWithMessageOnError "ember-cli failed"
-
-# echo Installing Bower
-# npm install -g bower
-# exitWithMessageOnError "bower failed"
-
-# echo Installing PhantomJS
-# npm install -g phatomjs
-# exitWithMessageOnError "phantomjs failed"
-
-# echo Ember Install Executing
-# ember install
-# exitWithMessageOnError "ember install failed"
-
 ##################################################################################################################################
 # Deployment
 # ----------
@@ -126,6 +108,26 @@ fi
 
 # 2. Select Node Version
 selectNodeVersion
+
+npm config set strict-ssl false
+
+echo Installing Ember CLI
+npm install -g ember-cli
+exitWithMessageOnError "ember-cli failed"
+
+# echo Installing Bower
+# npm install -g bower
+# exitWithMessageOnError "bower failed"
+
+# echo Installing PhantomJS
+# npm install -g phatomjs
+# exitWithMessageOnError "phantomjs failed"
+
+# echo Ember Install Executing
+# ember install
+# exitWithMessageOnError "ember install failed"
+
+npm config
 
 # 3. Install npm packages
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
