@@ -8,6 +8,7 @@ Router = Ember.Router.extend(
 Router.map(->
   @.route('todos', path: '/')
   @.route('login')
+  @.route('signup')
 )
 
 `export default Router`

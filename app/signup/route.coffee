@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 `import UnauthenticatedRouteMixin from 'simple-auth/mixins/unauthenticated-route-mixin'`
 
-LoginRoute = Ember.Route.extend UnauthenticatedRouteMixin
+SignupRoute = Ember.Route.extend UnauthenticatedRouteMixin
 
-`export default LoginRoute`
+`export default SignupRoute`

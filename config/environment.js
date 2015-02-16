@@ -21,7 +21,8 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:token',
-    routeAfterAuthentication: 'todo',
+    routeAfterAuthentication: 'todos',
+    routeIfAlreadyAuthenticated: 'todos',
     crossOriginWhitelist: ['http://angulartododemo.azurewebsites.net']
   };
 
