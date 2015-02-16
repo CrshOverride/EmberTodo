@@ -109,9 +109,9 @@ echo Handling node.js deployment.
 # 3. Install everything
 #npm config set strict-ssl false
 
-# echo Installing Ember CLI
-# $NPM_CMD install -g ember-cli
-# exitWithMessageOnError "ember-cli failed"
+echo Installing Ember CLI
+eval $NPM_CMD install -g ember-cli
+exitWithMessageOnError "ember-cli failed"
 
 # echo Installing Bower
 # npm install -g bower
@@ -129,16 +129,16 @@ echo Handling node.js deployment.
 # ember build
 # exitWithMessageOnError "ember build failed"
 
-4. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
+# 4. KuduSync
+# if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+#   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+#   exitWithMessageOnError "Kudu Sync failed"
+# fi
 
-selectNodeVersion
+# selectNodeVersion
 
-echo $NPM_CMD
-echo $NODE_EXE
+# echo $NPM_CMD
+# echo $NODE_EXE
 
 # 5. Install npm packages
 # if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
