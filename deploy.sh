@@ -124,6 +124,10 @@ echo Handling node.js deployment.
 # eval $NPM_CMD install phantomjs
 # exitWithMessageOnError "phantomjs failed"
 
+echo Removing cached version of Phantom JS
+rm -rf "D:\\local\\Temp\\phantomjs\\"
+exitWithMessageOnError "Failed to remove cached Phantom JS package"
+
 echo Npm Install Executing
 eval $NPM_CMD install
 exitWithMessageOnError "npm install failed"
