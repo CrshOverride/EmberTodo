@@ -104,6 +104,11 @@ echo Handling node.js deployment.
 cd "$DEPLOYMENT_SOURCE"
 
 node --version
+
+echo Upgrading npm
+npm install -g npm
+exitWithMessageOnError "npm failed"
+
 npm --version
 
 # 2. Select Node Version
