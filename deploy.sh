@@ -98,8 +98,8 @@ selectNodeVersion () {
 # Deployment
 # ----------
 
-NODE_EXE = "D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
-NPM_CMD = "\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
+NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
 
 echo Handling node.js deployment.
 
@@ -107,10 +107,6 @@ echo Handling node.js deployment.
 # cd "$DEPLOYMENT_SOURCE"
 
 # node --version
-
-echo Upgrading npm
-$NPM_CMD install -g npm
-exitWithMessageOnError "npm failed"
 
 # 2. Select Node Version
 # selectNodeVersion
