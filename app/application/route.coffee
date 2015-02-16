@@ -4,9 +4,9 @@
 ApplicationRoute = Ember.Route.extend ApplicationRouteMixin,
   actions:
     sessionAuthenticationFailed: (error) ->
-      @controllerFor('login').set('loginErrorMessage', 'Oh noes! You broke teh Interwebs wit ur creds. Try again!')
+      @controllerFor('login').set('login_error_message', 'Oh noes! You broke teh Interwebs wit ur creds. Try again!')
 
     authorizationFailed: (error) ->
-      @controllerFor('login').set('loginErrorMessage', 'Oh noes! You broke teh Interwebs wit ur creds. Try again!')
+      @controllerFor('login').set('login_error_message', 'Oh noes! You broke teh Interwebs wit ur creds. Try again!')
 
 `export default ApplicationRoute`
