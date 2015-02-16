@@ -132,7 +132,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 echo 2. Building
 
 echo 2.1 Ember build
-call :ExecuteCmd ember build
+call :ExecuteCmd grunt
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Select node version
