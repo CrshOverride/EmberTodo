@@ -109,7 +109,7 @@ echo Upgrading npm
 npm install -g npm
 exitWithMessageOnError "npm failed"
 
-npm --version
+"D:\local\AppData\npm\node_modules\npm --version"
 
 # 2. Select Node Version
 # selectNodeVersion
