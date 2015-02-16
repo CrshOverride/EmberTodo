@@ -87,15 +87,6 @@ goto Deployment
 
 :Deployment
 echo Handling Ember CLI Build
-echo 0. Copy files to deployment target
-
-IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
-  IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-cd %DEPLOYMENT_TARGET%
-
 echo 1. Install dependencies
 
 SET NODE_EXE="D:\Program Files (x86)\nodejs\0.10.32\node.exe"
