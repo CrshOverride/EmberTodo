@@ -101,15 +101,13 @@ selectNodeVersion () {
 echo Handling node.js deployment.
 
 # 1. Create Destination Directory
-cd "$DEPLOYMENT_SOURCE"
+# cd "$DEPLOYMENT_SOURCE"
 
-node --version
+# node --version
 
-echo Upgrading npm
-npm install -g npm
-exitWithMessageOnError "npm failed"
-
-"D:\local\AppData\npm\node_modules\npm --version"
+# echo Upgrading npm
+# npm install -g npm
+# exitWithMessageOnError "npm failed"
 
 # 2. Select Node Version
 # selectNodeVersion
@@ -117,9 +115,9 @@ exitWithMessageOnError "npm failed"
 # 3. Install everything
 #npm config set strict-ssl false
 
-echo Installing Ember CLI
-npm install -g ember-cli
-exitWithMessageOnError "ember-cli failed"
+# echo Installing Ember CLI
+# npm install -g ember-cli
+# exitWithMessageOnError "ember-cli failed"
 
 # echo Installing Bower
 # npm install -g bower
@@ -137,19 +135,24 @@ exitWithMessageOnError "ember-cli failed"
 # ember build
 # exitWithMessageOnError "ember build failed"
 
-# 4. KuduSync
-# if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-#   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-#   exitWithMessageOnError "Kudu Sync failed"
-# fi
+4. KuduSync
+if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+  exitWithMessageOnError "Kudu Sync failed"
+fi
 
-# 5. Install npm packages
-# if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
-#   cd "$DEPLOYMENT_TARGET"
-#   eval $NPM_CMD install --production
-#   exitWithMessageOnError "npm failed"
-#   cd - > /dev/null
-# fi
+selectNodeVersion
+
+echo $NODE_EXE
+echo $NPM_CMD
+
+5. Install npm packages
+if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
+  cd "$DEPLOYMENT_TARGET"
+  eval $NPM_CMD install --production
+  exitWithMessageOnError "npm failed"
+  cd - > /dev/null
+fi
 
 ##################################################################################################################################
 
