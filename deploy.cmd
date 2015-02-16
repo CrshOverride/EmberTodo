@@ -103,6 +103,10 @@ echo 1.1 Remove cached version of PhantomJS
 rmdir "D:\local\Temp\phantomjs"
 IF !ERRORLEVEL! NEQ 0 goto error
 
+echo 1.2 Execute npm install
+call :ExecuteCmd !NPM_CMD! install --production
+IF !ERRORLEVEL! NEQ 0 goto error
+
 :: 1. KuduSync
 ::IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 ::  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
