@@ -132,9 +132,9 @@ echo Npm Install Executing
 eval $NPM_CMD install --no-bin-links
 exitWithMessageOnError "npm install failed"
 
-# echo Bower Install Executing
-# eval $BOWER_CMD install
-# exitWithMessageOnError "bower install failed"
+echo Bower Install Executing
+eval $BOWER_CMD install
+exitWithMessageOnError "bower install failed"
 
 # echo Ember Build Executing
 # eval $EMBER_CMD build
