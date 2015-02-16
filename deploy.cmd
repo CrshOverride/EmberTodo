@@ -113,7 +113,7 @@ call :ExecuteCmd !NPM_CMD! install -g bower
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.1.3 Install grunt globally
-call :ExecuteCmd !NPM_CMD! install -g grunt
+call :ExecuteCmd !NPM_CMD! install -g grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.2 Execute npm install
