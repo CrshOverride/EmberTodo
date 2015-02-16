@@ -129,7 +129,7 @@ rm -rf "D:\\local\\Temp\\phantomjs\\"
 exitWithMessageOnError "Failed to remove cached Phantom JS package"
 
 echo Npm Install Executing
-eval $NPM_CMD install
+eval $NPM_CMD install --no-bin-links
 exitWithMessageOnError "npm install failed"
 
 # echo Bower Install Executing
