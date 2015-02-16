@@ -121,9 +121,9 @@ echo Installing PhantomJS
 eval $NPM_CMD install -g phantomjs
 exitWithMessageOnError "phantomjs failed"
 
-# echo Ember Install Executing
-# ember install
-# exitWithMessageOnError "ember install failed"
+echo Ember Install Executing
+ember install
+exitWithMessageOnError "ember install failed"
 
 # echo Ember Build Executing
 # ember build
