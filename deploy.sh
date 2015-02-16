@@ -100,7 +100,7 @@ selectNodeVersion () {
 
 NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
 NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
-EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\ember-cli\\bin\\ember\""
+EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
 
 echo Using node from: $NODE_EXE
 echo Using npm command: $NPM_CMD
@@ -111,15 +111,15 @@ echo Handling node.js deployment.
 #npm config set strict-ssl false
 
 echo Installing Ember CLI
-eval $NPM_CMD install -g ember-cli
+eval $NPM_CMD install ember-cli
 exitWithMessageOnError "ember-cli failed"
 
 echo Installing Bower
-eval $NPM_CMD install -g bower
+eval $NPM_CMD install bower
 exitWithMessageOnError "bower failed"
 
 echo Installing PhantomJS
-eval $NPM_CMD install -g phantomjs
+eval $NPM_CMD install phantomjs
 exitWithMessageOnError "phantomjs failed"
 
 echo Ember Install Executing
