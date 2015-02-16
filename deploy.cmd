@@ -90,9 +90,9 @@ echo Handling Ember CLI Build
 echo 1. Install dependencies
 
 SET NODE_EXE="D:\Program Files (x86)\nodejs\0.10.32\node.exe"
-SET NPM_CMD="""D:\Program Files (x86)\nodejs\0.10.32\node.exe" "D:\Program Files (x86)\npm\1.4.28\node_modules\npm\bin\npm-cli.js"""
-SET EMBER_CMD="""D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\ember-cli\bin\ember"""
-SET BOWER_CMD="""D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\bower\bin\bower"""
+SET NPM_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "D:\Program Files (x86)\npm\1.4.28\node_modules\npm\bin\npm-cli.js"
+SET EMBER_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\ember-cli\bin\ember"
+SET BOWER_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\bower\bin\bower"
 
 echo Using node from: %NODE_EXE%
 echo Using npm command: %NPM_CMD%
