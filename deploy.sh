@@ -104,6 +104,7 @@ echo Handling node.js deployment.
 cd "$DEPLOYMENT_SOURCE"
 
 node --version
+npm --version
 
 # 2. Select Node Version
 # selectNodeVersion
