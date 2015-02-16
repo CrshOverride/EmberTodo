@@ -119,9 +119,9 @@ echo Installing Bower
 eval $NPM_CMD install bower
 exitWithMessageOnError "bower failed"
 
-echo Installing PhantomJS
-eval $NPM_CMD install phantomjs
-exitWithMessageOnError "phantomjs failed"
+# echo Installing PhantomJS
+# eval $NPM_CMD install phantomjs
+# exitWithMessageOnError "phantomjs failed"
 
 echo Npm Install Executing
 eval $NPM_CMD install
@@ -132,7 +132,7 @@ eval $BOWER_CMD install
 exitWithMessageOnError "bower install failed"
 
 echo Ember Build Executing
-eval $EMBER_BUILD_CMD build
+eval $EMBER_CMD build
 exitWithMessageOnError "ember build failed"
 
 # 4. KuduSync
