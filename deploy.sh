@@ -64,28 +64,6 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-npm config set strict-ssl false
-
-echo Upgrading NPM
-npm install -g npm
-exitWithMessageOnError "npm failed"
-
-echo Installing Ember CLI
-npm install -g ember-cli
-exitWithMessageOnError "ember-cli failed"
-
-echo Installing Bower
-npm install -g bower
-exitWithMessageOnError "bower failed"
-
-echo Installing PhantomJS
-npm install -g phatomjs
-exitWithMessageOnError "phantomjs failed"
-
-echo Ember Install Executing
-ember install
-exitWithMessageOnError "ember install failed"
-
 # Node Helpers
 # ------------
 
@@ -115,6 +93,26 @@ selectNodeVersion () {
     NODE_EXE=node
   fi
 }
+
+selectNodeVersion
+
+npm config set strict-ssl false
+
+echo Installing Ember CLI
+npm install -g ember-cli
+exitWithMessageOnError "ember-cli failed"
+
+echo Installing Bower
+npm install -g bower
+exitWithMessageOnError "bower failed"
+
+echo Installing PhantomJS
+npm install -g phatomjs
+exitWithMessageOnError "phantomjs failed"
+
+echo Ember Install Executing
+ember install
+exitWithMessageOnError "ember install failed"
 
 ##################################################################################################################################
 # Deployment
