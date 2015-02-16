@@ -105,6 +105,7 @@ BOWER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_
 
 echo Using node from: $NODE_EXE
 echo Using npm command: $NPM_CMD
+echo Using Temp Dir: $DEPLOYMENT_TEMP
 
 echo Handling node.js deployment.
 
