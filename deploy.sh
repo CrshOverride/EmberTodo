@@ -101,48 +101,49 @@ selectNodeVersion () {
 echo Handling node.js deployment.
 
 # 1. Create Destination Directory
-mkdir "$DEPLOYMENT_TARGET"
 cd "$DEPLOYMENT_SOURCE"
 
+node --version
+
 # 2. Select Node Version
-selectNodeVersion
+# selectNodeVersion
 
 # 3. Install everything
-npm config set strict-ssl false
+# npm config set strict-ssl false
 
-echo Installing Ember CLI
-npm install -g ember-cli
-exitWithMessageOnError "ember-cli failed"
+# echo Installing Ember CLI
+# npm install -g ember-cli
+# exitWithMessageOnError "ember-cli failed"
 
-echo Installing Bower
-npm install -g bower
-exitWithMessageOnError "bower failed"
+# echo Installing Bower
+# npm install -g bower
+# exitWithMessageOnError "bower failed"
 
-echo Installing PhantomJS
-npm install -g phantomjs
-exitWithMessageOnError "phantomjs failed"
+# echo Installing PhantomJS
+# npm install -g phantomjs
+# exitWithMessageOnError "phantomjs failed"
 
-echo Ember Install Executing
-ember install
-exitWithMessageOnError "ember install failed"
+# echo Ember Install Executing
+# ember install
+# exitWithMessageOnError "ember install failed"
 
-echo Ember Build Executing
-ember build
-exitWithMessageOnError "ember build failed"
+# echo Ember Build Executing
+# ember build
+# exitWithMessageOnError "ember build failed"
 
 # 4. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
+# if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+#   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+#   exitWithMessageOnError "Kudu Sync failed"
+# fi
 
 # 5. Install npm packages
-if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
-  cd "$DEPLOYMENT_TARGET"
-  eval $NPM_CMD install --production
-  exitWithMessageOnError "npm failed"
-  cd - > /dev/null
-fi
+# if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
+#   cd "$DEPLOYMENT_TARGET"
+#   eval $NPM_CMD install --production
+#   exitWithMessageOnError "npm failed"
+#   cd - > /dev/null
+# fi
 
 ##################################################################################################################################
 
