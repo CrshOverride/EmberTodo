@@ -103,20 +103,12 @@ NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Fi
 
 echo Handling node.js deployment.
 
-# 1. Create Destination Directory
-# cd "$DEPLOYMENT_SOURCE"
-
-# node --version
-
-# 2. Select Node Version
-# selectNodeVersion
-
 # 3. Install everything
 #npm config set strict-ssl false
 
-# echo Installing Ember CLI
-# npm install -g ember-cli
-# exitWithMessageOnError "ember-cli failed"
+echo Installing Ember CLI
+$NPM_CMD install -g ember-cli
+exitWithMessageOnError "ember-cli failed"
 
 # echo Installing Bower
 # npm install -g bower
