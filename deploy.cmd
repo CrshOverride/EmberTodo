@@ -107,6 +107,16 @@ echo 1.2 Execute npm install
 call :ExecuteCmd !NPM_CMD! install --no-bin-links --production
 IF !ERRORLEVEL! NEQ 0 goto error
 
+echo 1.3 Execute bower install
+call :ExecuteCmd !BOWER_CMD! install
+IF !ERRORLEVEL! NEQ 0 goto error
+
+echo 2. Building
+
+echo 2.1 Ember build
+call :ExecuteCmd !EMBER_CMD! build
+IF !ERRORLEVEL! NEQ 0 goto error
+
 :: 1. KuduSync
 ::IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 ::  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
