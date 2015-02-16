@@ -137,7 +137,7 @@ eval $BOWER_CMD install
 exitWithMessageOnError "bower install failed"
 
 echo Ember Build Executing
-eval $EMBER_CMD build
+eval cmd.exe $EMBER_CMD build
 exitWithMessageOnError "ember build failed"
 
 # 4. KuduSync
