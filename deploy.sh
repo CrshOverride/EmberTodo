@@ -64,6 +64,10 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
+echo Upgrading NPM
+npm install -g npm
+exitWithMessageOnError "npm failed"
+
 echo Installing Ember CLI
 npm install -g ember-cli
 exitWithMessageOnError "ember-cli failed"
