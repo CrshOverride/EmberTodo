@@ -100,7 +100,7 @@ selectNodeVersion () {
 
 NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
 NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
-EMBER_INSTALL_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\" install"
+EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
 
 echo Using node from: $NODE_EXE
 echo Using npm command: $NPM_CMD
@@ -123,12 +123,12 @@ eval $NPM_CMD install -g phantomjs
 exitWithMessageOnError "phantomjs failed"
 
 echo Ember Install Executing
-echo $EMBER_INSTALL_CMD
+eval $EMBER_CMD install
 exitWithMessageOnError "ember install failed"
 
-# echo Ember Build Executing
-# ember build
-# exitWithMessageOnError "ember build failed"
+echo Ember Build Executing
+eval $EMBER_BUILD_CMD build
+exitWithMessageOnError "ember build failed"
 
 # 4. KuduSync
 # if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
