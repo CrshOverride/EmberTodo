@@ -94,7 +94,7 @@ selectNodeVersion () {
   fi
 }
 
-# npm config set strict-ssl false
+#npm config set strict-ssl false
 
 # echo Installing Ember CLI
 # npm install -g ember-cli
@@ -118,14 +118,14 @@ selectNodeVersion () {
 
 echo Handling node.js deployment.
 
-# 1. KuduSync
+# 1. Select node version
+selectNodeVersion
+
+# 2. KuduSync
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
   exitWithMessageOnError "Kudu Sync failed"
 fi
-
-# 2. Select node version
-selectNodeVersion
 
 # 3. Install npm packages
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
