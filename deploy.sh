@@ -111,9 +111,9 @@ node --version
 # 3. Install everything
 # npm config set strict-ssl false
 
-# echo Installing Ember CLI
-# npm install -g ember-cli
-# exitWithMessageOnError "ember-cli failed"
+echo Installing Ember CLI
+npm install -g ember-cli
+exitWithMessageOnError "ember-cli failed"
 
 # echo Installing Bower
 # npm install -g bower
