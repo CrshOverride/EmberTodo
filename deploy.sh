@@ -98,6 +98,9 @@ selectNodeVersion () {
 # Deployment
 # ----------
 
+NODE_EXE = "D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
+NPM_CMD = "\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+
 echo Handling node.js deployment.
 
 # 1. Create Destination Directory
@@ -105,9 +108,9 @@ echo Handling node.js deployment.
 
 # node --version
 
-# echo Upgrading npm
-# npm install -g npm
-# exitWithMessageOnError "npm failed"
+echo Upgrading npm
+$NPM_CMD install -g npm
+exitWithMessageOnError "npm failed"
 
 # 2. Select Node Version
 # selectNodeVersion
@@ -135,24 +138,19 @@ echo Handling node.js deployment.
 # ember build
 # exitWithMessageOnError "ember build failed"
 
-4. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
+# 4. KuduSync
+# if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+#   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+#   exitWithMessageOnError "Kudu Sync failed"
+# fi
 
-selectNodeVersion
-
-echo $NODE_EXE
-echo $NPM_CMD
-
-5. Install npm packages
-if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
-  cd "$DEPLOYMENT_TARGET"
-  eval $NPM_CMD install --production
-  exitWithMessageOnError "npm failed"
-  cd - > /dev/null
-fi
+# 5. Install npm packages
+# if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
+#   cd "$DEPLOYMENT_TARGET"
+#   eval $NPM_CMD install --production
+#   exitWithMessageOnError "npm failed"
+#   cd - > /dev/null
+# fi
 
 ##################################################################################################################################
 
