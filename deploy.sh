@@ -113,13 +113,13 @@ echo Installing Ember CLI
 eval $NPM_CMD install -g ember-cli
 exitWithMessageOnError "ember-cli failed"
 
-# echo Installing Bower
-# npm install -g bower
-# exitWithMessageOnError "bower failed"
+echo Installing Bower
+eval $NPM_CMD install -g bower
+exitWithMessageOnError "bower failed"
 
-# echo Installing PhantomJS
-# npm install -g phantomjs
-# exitWithMessageOnError "phantomjs failed"
+echo Installing PhantomJS
+eval $NPM_CMD install -g phantomjs
+exitWithMessageOnError "phantomjs failed"
 
 # echo Ember Install Executing
 # ember install
