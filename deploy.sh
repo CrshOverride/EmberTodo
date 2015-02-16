@@ -120,7 +120,7 @@ npm install -g bower
 exitWithMessageOnError "bower failed"
 
 echo Installing PhantomJS
-npm install -g phatomjs
+npm install -g phantomjs
 exitWithMessageOnError "phantomjs failed"
 
 echo Ember Install Executing
