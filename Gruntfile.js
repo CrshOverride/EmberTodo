@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         stdin: false
       },
       target: {
-        command: 'ember build'
+        command: 'ember build -prod'
       }
     }
   });

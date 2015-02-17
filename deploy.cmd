@@ -91,11 +91,14 @@ echo 2.1 Install grunt-cli
 call :ExecuteCmd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 2.1 Ember build
+echo 2.2 Clean destination folder
+del %DEPLOYMENT_TARGET%\*.* /F
+
+echo 2.3 Ember build
 call :ExecuteCmd !GRUNT_CMD! --no-color --verbose
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 2.2 Copy web.config to dist
+echo 2.4 Copy web.config to dist
 copy web.config dist\
 
 echo 3. Publish compiled assets
