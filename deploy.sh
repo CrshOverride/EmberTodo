@@ -33,10 +33,14 @@ KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
 NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
 NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
 NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
-EMBER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\ember-cli\\bin\\ember\""
-BOWER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\bower\\bin\\bower\""
-GRUNT_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt\""
 
+EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
+BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
+GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
+
+EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
+BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
+GRUNT_CMD="\"$NODE_EXE\" \"$GRUNT_PATH\""
 
 if [[ ! -n "$DEPLOYMENT_SOURCE" ]]; then
   DEPLOYMENT_SOURCE=$SCRIPT_DIR
@@ -71,7 +75,7 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-if [[ ! -e $EMBER_CMD ]]; then
+if [[ ! -e "$EMBER_PATH" ]]; then
   echo Installing ember-cli
   eval $NPM_CMD install -g ember-cli
   exitWithMessageOnError "ember-cli failed"
@@ -79,7 +83,7 @@ else
   echo ember-cli already installed, nothing to do
 fi
 
-if [[ ! -e $BOWER_CMD ]]; then
+if [[ ! -e "$BOWER_PATH" ]]; then
   echo Installing bower
   eval $NPM_CMD install -g bower
   exitWithMessageOnError "bower failed"
@@ -87,7 +91,7 @@ else
   echo bower already installed, nothing to do
 fi
 
-if [[ ! -e $GRUNT_CMD ]]; then
+if [[ ! -e "$GRUNT_PATH" ]]; then
   echo Installing grunt-cli
   eval $NPM_CMD install -g grunt-cli
   exitWithMessageOnError "grunt-cli failed"
