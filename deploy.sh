@@ -37,6 +37,7 @@ NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
 BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
 GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
+PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
@@ -81,6 +82,13 @@ if [[ ! -e "$EMBER_PATH" ]]; then
   exitWithMessageOnError "ember-cli failed"
 else
   echo ember-cli already installed, nothing to do
+fi
+
+if [[ ! -e "$PHANTOMJS_PATH" ]]; then
+  echo Installing phantom-js
+  eval $NPM_CMD install -g phantomjs
+  exitWithMessageOnError "phantomjs failed"
+else
 fi
 
 if [[ ! -e "$BOWER_PATH" ]]; then
