@@ -124,7 +124,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 echo 2. Building
 
 echo 2.1 Install grunt-cli
-call :ExecuteMd !NPM_CMD! install bower-cli
+call :ExecuteMd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2.1 Ember build
