@@ -118,10 +118,6 @@ exitWithMessageOnError "grunt build failed"
 echo Copy web.config to the dist folder
 cp web.config dist\
 
-echo Cleaning the destination via rm -rf $DEPLOYMENT_TARGET\\*
-rm -rf $DEPLOYMENT_TARGET\\*
-exitWithMessageOnError "failed to clean the target directory"
-
 ##################################################################################################################################
 # Deployment
 # ----------
