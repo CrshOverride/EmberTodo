@@ -113,7 +113,7 @@ fi
 # -----
 
 echo Installing npm modules
-eval $NPM_CMD install
+eval $NPM_CMD install --no-bin-links
 exitWithMessageOnError "npm install failed"
 
 echo Installing bower dependencies
@@ -131,9 +131,9 @@ cp web.config dist\
 # Test
 # ----
 
-echo Executing Tests
-eval $GRUNT_CMD shell:test --no-color --verbose
-exitWithMessageOnError "unit tests failed"
+# echo Executing Tests
+# eval $GRUNT_CMD shell:test --no-color --verbose
+# exitWithMessageOnError "unit tests failed"
 
 ##################################################################################################################################
 # Deployment
