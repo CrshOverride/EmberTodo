@@ -71,7 +71,7 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-if [[ ! -e "$EMBER_CMD"]]
+if [[ ! -e "$EMBER_CMD" ]]; then
   echo Installing ember-cli
   eval $NPM_CMD install -g ember-cli
   exitWithMessageOnError "ember-cli failed"
