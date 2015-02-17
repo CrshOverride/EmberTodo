@@ -92,7 +92,7 @@ call :ExecuteCmd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2.2 Clean destination folder
-del %DEPLOYMENT_TARGET%\*.* /F
+del %DEPLOYMENT_TARGET%\*.* /F /Q
 
 echo 2.3 Ember build
 call :ExecuteCmd !GRUNT_CMD! --no-color --verbose
