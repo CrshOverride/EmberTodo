@@ -71,7 +71,7 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-if [[ ! -e "$EMBER_CMD" ]]; then
+if [[ ! -e $EMBER_CMD ]]; then
   echo Installing ember-cli
   eval $NPM_CMD install -g ember-cli
   exitWithMessageOnError "ember-cli failed"
@@ -79,7 +79,7 @@ else
   echo ember-cli already installed, nothing to do
 fi
 
-if [[ ! -e "$BOWER_CMD" ]]; then
+if [[ ! -e $BOWER_CMD ]]; then
   echo Installing bower
   eval $NPM_CMD install -g bower
   exitWithMessageOnError "bower failed"
@@ -87,7 +87,7 @@ else
   echo bower already installed, nothing to do
 fi
 
-if [[ ! -e "$GRUNT_CMD" ]]; then
+if [[ ! -e $GRUNT_CMD ]]; then
   echo Installing grunt-cli
   eval $NPM_CMD install -g grunt-cli
   exitWithMessageOnError "grunt-cli failed"
