@@ -89,6 +89,7 @@ if [[ ! -e "$PHANTOMJS_PATH" ]]; then
   eval $NPM_CMD install -g phantomjs
   exitWithMessageOnError "phantomjs failed"
 else
+  echo phantomjs already installed, nothing to do
 fi
 
 if [[ ! -e "$BOWER_PATH" ]]; then
