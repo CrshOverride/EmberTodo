@@ -73,7 +73,7 @@ fi
 
 if [[ ! -n "$EMBER_CMD" ]]; then
   echo Installing ember-cli
-  $NPM_CMD install -g ember-cli
+  eval $NPM_CMD install -g ember-cli
   exitWithMessageOnError "ember-cli failed"
 else
   echo ember-cli already installed, nothing to do
@@ -81,7 +81,7 @@ fi
 
 if [[ ! -n "$BOWER_CMD" ]]; then
   echo Installing bower
-  $NPM_CMD install -g bower
+  eval $NPM_CMD install -g bower
   exitWithMessageOnError "bower failed"
 else
   echo bower already installed, nothing to do
@@ -89,7 +89,7 @@ fi
 
 if [[ ! -n "$GRUNT_CMD" ]]; then
   echo Installing grunt-cli
-  $NPM_CMD install -g grunt-cli
+  eval $NPM_CMD install -g grunt-cli
   exitWithMessageOnError "grunt-cli failed"
 else
   echo grunt-cli already installed, nothing to do
@@ -99,18 +99,16 @@ fi
 # Build
 # -----
 
-echo $NPM_CMD
-
 echo Installing npm modules
-$NPM_CMD install --no-bin-links
+eval $NPM_CMD install --no-bin-links
 exitWithMessageOnError "npm install failed"
 
 echo Installing bower dependencies
-$BOWER_CMD install
+eval $BOWER_CMD install
 exitWithMessageOnError "bower install failed"
 
 echo Build the dist folder
-$GRUNT_CMD --no-color --verbose
+eval $GRUNT_CMD --no-color --verbose
 exitWithMessageOnError "grunt build failed"
 
 echo Copy web.config to the dist folder
