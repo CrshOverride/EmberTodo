@@ -101,19 +101,19 @@ echo Using Source Directory: %DEPLOYMENT_SOURCE%
 echo Using Destination Directory: %DEPLOYMENT_TARGET%
 echo Using Temp Directory: %DEPLOYMENT_TEMP%
 
-::echo 1.1.1 Install ember-cli globally
-::call :ExecuteCmd !NPM_CMD! install -g ember-cli
-::IF !ERRORLEVEL! NEQ 0 goto error
+echo 1.1 Install ember-cli globally
+call :ExecuteCmd !NPM_CMD! install -g ember-cli
+IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 1.1 Install bower
+echo 1.2 Install bower
 call :ExecuteCmd !NPM_CMD! install bower
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 1.2 Execute npm install
+echo 1.3 Execute npm install
 call :ExecuteCmd !NPM_CMD! install --no-bin-links
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 1.3 Execute bower install
+echo 1.4 Execute bower install
 call :ExecuteCmd !BOWER_CMD! install
 IF !ERRORLEVEL! NEQ 0 goto error
 
