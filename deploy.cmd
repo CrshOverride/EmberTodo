@@ -101,17 +101,13 @@ echo Using Source Directory: %DEPLOYMENT_SOURCE%
 echo Using Destination Directory: %DEPLOYMENT_TARGET%
 echo Using Temp Directory: %DEPLOYMENT_TEMP%
 
-echo 1.1 Remove cached version of PhantomJS
-rmdir "D:\local\Temp\phantomjs"
-IF !ERRORLEVEL! NEQ 0 goto error
-
 ::echo 1.1.1 Install ember-cli globally
 ::call :ExecuteCmd !NPM_CMD! install -g ember-cli
 ::IF !ERRORLEVEL! NEQ 0 goto error
-::
-::echo 1.1.2 Install bower globally
-::call :ExecuteCmd !NPM_CMD! install -g bower
-::IF !ERRORLEVEL! NEQ 0 goto error
+
+echo 1.1 Install bower
+call :ExecuteCmd !NPM_CMD! install bower
+IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.2 Execute npm install
 call :ExecuteCmd !NPM_CMD! install --no-bin-links
