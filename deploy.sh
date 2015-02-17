@@ -35,6 +35,7 @@ NODE_MODULES_DIR="$PROGRAMFILES\\npm\\1.4.28\\node_modules"
 NPM_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\npm\\bin\\npm-cli.js\""
 EMBER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\ember-cli\\bin\\ember\""
 BOWER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\bower\\bin\\bower\""
+GRUNT_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt\""
 
 
 if [[ ! -n "$DEPLOYMENT_SOURCE" ]]; then
@@ -86,24 +87,39 @@ else
   echo bower already installed, nothing to do
 fi
 
+if [[ ! -n "$GRUNT_CMD" ]]; then
+  echo Installing grunt-cli
+  $NPM_CMD install -g grunt-cli
+  exitWithMessageOnError "grunt-cli failed"
+else
+  echo grunt-cli already installed, nothing to do
+fi
+
+##################################################################################################################################
+# Build
+# -----
+
+echo Installing npm modules
+$NPM_CMD install --no-bin-links
+exitWithMessageOnError "npm install failed"
+
+echo Installing bower dependencies
+$BOWER_CMD install
+exitWithMessageOnError "bower install failed"
+
+echo Build the dist folder
+$GRUNT_CMD --no-color --verbose
+exitWithMessageOnError "grunt build failed"
+
+echo Copy web.config to the dist folder
+cp web.config dist\
+
+echo Cleaning the destination
+rm -rf $DEPLOYMENT_TARGET\\*
+
 ##################################################################################################################################
 # Deployment
 # ----------
-
-echo $PROGRAMFILES
-echo $NODE_EXE
-echo $NODE_MODULES_DIR
-echo $NPM_CMD
-
-# NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
-# NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
-# EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
-# BOWER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\bower\\bin\\bower\""
-
-# echo Using node from: $NODE_EXE
-# echo Using npm command: $NPM_CMD
-# echo Using Source Dir: $DEPLOYMENT_SOURCE
-# echo Using Temp Dir: $DEPLOYMENT_TEMP
 
 # echo Handling node.js deployment.
 
