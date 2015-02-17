@@ -93,6 +93,7 @@ SET NODE_EXE="D:\Program Files (x86)\nodejs\0.10.32\node.exe"
 SET NPM_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "D:\Program Files (x86)\npm\1.4.28\node_modules\npm\bin\npm-cli.js"
 SET EMBER_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\ember-cli\bin\ember"
 SET BOWER_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\bower\bin\bower"
+SET GRUNT_CMD="D:\Program Files (x86)\nodejs\0.10.32\node.exe" "%DEPLOYMENT_SOURCE%\node_modules\grunt-cli\bin\grunt"
 
 echo Using node from: %NODE_EXE%
 echo Using npm command: %NPM_CMD%
@@ -112,10 +113,6 @@ echo 1.1.2 Install bower globally
 call :ExecuteCmd !NPM_CMD! install -g bower
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 1.1.3 Install grunt globally
-call :ExecuteCmd !NPM_CMD! install -g grunt-cli
-IF !ERRORLEVEL! NEQ 0 goto error
-
 echo 1.2 Execute npm install
 call :ExecuteCmd !NPM_CMD! install --no-bin-links --production
 IF !ERRORLEVEL! NEQ 0 goto error
@@ -126,8 +123,12 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2. Building
 
+echo 2.1 Install grunt-cli
+call :ExecuteMd !NPM_CMD! install bower-cli
+IF !ERRORLEVEL! NEQ 0 goto error
+
 echo 2.1 Ember build
-call :ExecuteCmd grunt
+call :ExecuteCmd !GRUNT_CMD!
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Select node version
