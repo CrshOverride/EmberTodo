@@ -64,51 +64,23 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-# Node Helpers
-# ------------
-
-selectNodeVersion () {
-  if [[ -n "$KUDU_SELECT_NODE_VERSION_CMD" ]]; then
-    SELECT_NODE_VERSION="$KUDU_SELECT_NODE_VERSION_CMD \"$DEPLOYMENT_SOURCE\" \"$DEPLOYMENT_TARGET\" \"$DEPLOYMENT_TEMP\""
-    eval $SELECT_NODE_VERSION
-    exitWithMessageOnError "select node version failed"
-
-    if [[ -e "$DEPLOYMENT_TEMP/__nodeVersion.tmp" ]]; then
-      NODE_EXE=`cat "$DEPLOYMENT_TEMP/__nodeVersion.tmp"`
-      exitWithMessageOnError "getting node version failed"
-    fi
-
-    if [[ -e "$DEPLOYMENT_TEMP/.tmp" ]]; then
-      NPM_JS_PATH=`cat "$DEPLOYMENT_TEMP/__npmVersion.tmp"`
-      exitWithMessageOnError "getting npm version failed"
-    fi
-
-    if [[ ! -n "$NODE_EXE" ]]; then
-      NODE_EXE=node
-    fi
-
-    NPM_CMD="\"$NODE_EXE\" \"$NPM_JS_PATH\""
-  else
-    NPM_CMD=npm
-    NODE_EXE=node
-  fi
-}
-
 ##################################################################################################################################
 # Deployment
 # ----------
 
-NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
-NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
-EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
-BOWER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\bower\\bin\\bower\""
+echo $PROGRAMFILES(X86)
 
-echo Using node from: $NODE_EXE
-echo Using npm command: $NPM_CMD
-echo Using Source Dir: $DEPLOYMENT_SOURCE
-echo Using Temp Dir: $DEPLOYMENT_TEMP
+# NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
+# NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+# EMBER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\ember-cli\\bin\\ember\""
+# BOWER_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"$DEPLOYMENT_SOURCE\\node_modules\\bower\\bin\\bower\""
 
-echo Handling node.js deployment.
+# echo Using node from: $NODE_EXE
+# echo Using npm command: $NPM_CMD
+# echo Using Source Dir: $DEPLOYMENT_SOURCE
+# echo Using Temp Dir: $DEPLOYMENT_TEMP
+
+# echo Handling node.js deployment.
 
 # 3. Install everything
 #npm config set strict-ssl false
@@ -125,21 +97,21 @@ echo Handling node.js deployment.
 # eval $NPM_CMD install phantomjs
 # exitWithMessageOnError "phantomjs failed"
 
-echo Removing cached version of Phantom JS
-rm -rf "D:\\local\\Temp\\phantomjs\\"
-exitWithMessageOnError "Failed to remove cached Phantom JS package"
+# echo Removing cached version of Phantom JS
+# rm -rf "D:\\local\\Temp\\phantomjs\\"
+# exitWithMessageOnError "Failed to remove cached Phantom JS package"
 
-echo Npm Install Executing
-eval $NPM_CMD install --no-bin-links
-exitWithMessageOnError "npm install failed"
+# echo Npm Install Executing
+# eval $NPM_CMD install --no-bin-links
+# exitWithMessageOnError "npm install failed"
 
-echo Bower Install Executing
-eval $BOWER_CMD install
-exitWithMessageOnError "bower install failed"
+# echo Bower Install Executing
+# eval $BOWER_CMD install
+# exitWithMessageOnError "bower install failed"
 
-echo Ember Build Executing
-eval $EMBER_CMD build
-exitWithMessageOnError "ember build failed"
+# echo Ember Build Executing
+# eval $EMBER_CMD build
+# exitWithMessageOnError "ember build failed"
 
 # 4. KuduSync
 # if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
