@@ -113,7 +113,7 @@ fi
 # -----
 
 echo Installing npm modules
-eval $NPM_CMD install --no-bin-links
+eval $NPM_CMD install
 exitWithMessageOnError "npm install failed"
 
 echo Installing bower dependencies
