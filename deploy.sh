@@ -34,6 +34,7 @@ NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
 NODE_MODULES_DIR="$PROGRAMFILES\\npm\\1.4.28\\node_modules"
 NPM_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\npm\\bin\\npm-cli.js\""
 EMBER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\ember-cli\\bin\\ember\""
+BOWER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\bower\\bin\\bower\""
 
 
 if [[ ! -n "$DEPLOYMENT_SOURCE" ]]; then
@@ -75,6 +76,14 @@ if [[ ! -n "$EMBER_CMD" ]]; then
   exitWithMessageOnError "ember-cli failed"
 else
   echo ember-cli already installed, nothing to do
+fi
+
+if [[ ! -n "$BOWER_CMD" ]]; then
+  echo Installing bower
+  $NPM_CMD install -g bower
+  exitWithMessageOnError "bower failed"
+else
+  echo bower already installed, nothing to do
 fi
 
 ##################################################################################################################################
