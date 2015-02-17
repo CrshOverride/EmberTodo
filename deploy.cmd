@@ -95,10 +95,12 @@ echo 2.1 Ember build
 call :ExecuteCmd !GRUNT_CMD! --no-color --verbose
 IF !ERRORLEVEL! NEQ 0 goto error
 
+echo 2.2 Copy web.config to dist
+copy web.config dist\
+
 echo 3. Publish compiled assets
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\dist" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\web.config" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
