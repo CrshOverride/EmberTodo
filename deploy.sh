@@ -128,6 +128,14 @@ echo Copy web.config to the dist folder
 cp web.config dist\
 
 ##################################################################################################################################
+# Test
+# ----
+
+echo Executing Tests
+eval $GRUNT_CMD shell:test --no-color --verbose
+exitWithMessageOnError "unit tests failed"
+
+##################################################################################################################################
 # Deployment
 # ----------
 

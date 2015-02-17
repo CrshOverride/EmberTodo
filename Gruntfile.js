@@ -3,15 +3,22 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     shell: {
-      options: {
-        stdout: true,
-        stdin: false
+      build: {
+        command: 'ember build -prod',
+        options: {
+          stdout: true,
+          stdin: false
+        }
       },
-      target: {
-        command: 'ember build -prod'
+      test: {
+        command: 'ember test',
+        options: {
+          stdout: true,
+          stdin: false
+        }
       }
     }
   });
 
-  grunt.registerTask('default', ['shell'])
+  grunt.registerTask('default', ['shell:build'])
 }

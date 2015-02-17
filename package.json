@@ -31,7 +31,7 @@
     "ember-cli-font-awesome": "0.0.9",
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-inject-live-reload": "^1.3.0",
-    "ember-cli-qunit": "0.3.1",
+    "ember-cli-qunit": "0.3.8",
     "ember-cli-simple-auth": "^0.7.3",
     "ember-cli-simple-auth-token": "^0.5.0",
     "ember-cli-uglify": "1.0.1",
