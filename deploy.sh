@@ -30,6 +30,10 @@ SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
 SCRIPT_DIR="${SCRIPT_DIR%/*}"
 ARTIFACTS=$SCRIPT_DIR/../artifacts
 KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
+NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
+NODE_MODULES_DIR="$PROGRAMFILES\\npm\\1.4.28\\node_modules"
+NPM_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\npm\\bin\\npm-cli.js\""
+
 
 if [[ ! -n "$DEPLOYMENT_SOURCE" ]]; then
   DEPLOYMENT_SOURCE=$SCRIPT_DIR
@@ -69,6 +73,9 @@ fi
 # ----------
 
 echo $PROGRAMFILES
+echo $NODE_EXE
+echo $NODE_MODULES_DIR
+echo $NPM_CMD
 
 # NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
 # NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
