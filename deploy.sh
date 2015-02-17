@@ -31,8 +31,8 @@ SCRIPT_DIR="${SCRIPT_DIR%/*}"
 ARTIFACTS=$SCRIPT_DIR/../artifacts
 KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
 NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
-NODE_MODULES_DIR="$PROGRAMFILES\\npm\\1.4.28\\node_modules"
-NPM_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\npm\\bin\\npm-cli.js\""
+NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 EMBER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\ember-cli\\bin\\ember\""
 BOWER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\bower\\bin\\bower\""
 GRUNT_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt\""
@@ -71,7 +71,7 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-if [[ ! -e "$EMBER_CMD" ]]; then
+if [[ ! -e "$EMBER_CMD"]]
   echo Installing ember-cli
   eval $NPM_CMD install -g ember-cli
   exitWithMessageOnError "ember-cli failed"
