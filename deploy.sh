@@ -33,6 +33,7 @@ KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
 NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
 NODE_MODULES_DIR="$PROGRAMFILES\\npm\\1.4.28\\node_modules"
 NPM_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\npm\\bin\\npm-cli.js\""
+EMBER_CMD="\"$NODE_EXE\" \"$NODE_MODULES_DIR\\ember-cli\\bin\\ember\""
 
 
 if [[ ! -n "$DEPLOYMENT_SOURCE" ]]; then
@@ -66,6 +67,14 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
     # In case we are running on kudu service this is the correct location of kuduSync
     KUDU_SYNC_CMD=$APPDATA/npm/node_modules/kuduSync/bin/kuduSync
   fi
+fi
+
+if [[ ! -n "$EMBER_CMD" ]]; then
+  echo Installing ember-cli
+  $NPM_CMD install -g ember-cli
+  exitWithMessageOnError "ember-cli failed"
+else
+  echo ember-cli already installed, nothing to do
 fi
 
 ##################################################################################################################################
