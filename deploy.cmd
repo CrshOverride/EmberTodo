@@ -114,7 +114,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 ::IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.2 Execute npm install
-call :ExecuteCmd !NPM_CMD! install --no-bin-links --production
+call :ExecuteCmd !NPM_CMD! install --no-bin-links
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.3 Execute bower install
@@ -128,7 +128,7 @@ call :ExecuteCmd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2.1 Ember build
-!GRUNT_CMD! --no-color --verbose
+call :ExecuteCmd !GRUNT_CMD! --no-color --verbose
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Select node version
