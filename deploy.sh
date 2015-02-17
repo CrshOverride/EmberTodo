@@ -99,6 +99,8 @@ fi
 # Build
 # -----
 
+echo $NPM_CMD
+
 echo Installing npm modules
 $NPM_CMD install --no-bin-links
 exitWithMessageOnError "npm install failed"
