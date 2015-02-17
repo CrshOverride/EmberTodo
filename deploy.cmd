@@ -105,13 +105,13 @@ echo 1.1 Remove cached version of PhantomJS
 rmdir "D:\local\Temp\phantomjs"
 IF !ERRORLEVEL! NEQ 0 goto error
 
-echo 1.1.1 Install ember-cli globally
-call :ExecuteCmd !NPM_CMD! install -g ember-cli
-IF !ERRORLEVEL! NEQ 0 goto error
-
-echo 1.1.2 Install bower globally
-call :ExecuteCmd !NPM_CMD! install -g bower
-IF !ERRORLEVEL! NEQ 0 goto error
+::echo 1.1.1 Install ember-cli globally
+::call :ExecuteCmd !NPM_CMD! install -g ember-cli
+::IF !ERRORLEVEL! NEQ 0 goto error
+::
+::echo 1.1.2 Install bower globally
+::call :ExecuteCmd !NPM_CMD! install -g bower
+::IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 1.2 Execute npm install
 call :ExecuteCmd !NPM_CMD! install --no-bin-links --production
@@ -124,7 +124,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 echo 2. Building
 
 echo 2.1 Install grunt-cli
-call :ExecuteMd !NPM_CMD! install grunt-cli
+call :ExecuteCmd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2.1 Ember build
