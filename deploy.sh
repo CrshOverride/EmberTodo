@@ -68,7 +68,7 @@ fi
 # Deployment
 # ----------
 
-echo $PROGRAMFILES(X86)
+echo $PROGRAMFILES
 
 # NODE_EXE="D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe"
 # NPM_CMD="\"D:\\Program Files (x86)\\nodejs\\0.10.32\\node.exe\" \"D:\\Program Files (x86)\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
