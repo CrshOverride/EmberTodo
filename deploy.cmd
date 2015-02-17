@@ -128,8 +128,8 @@ call :ExecuteCmd !NPM_CMD! install grunt-cli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo 2.1 Ember build
-call :ExecuteCmd !GRUNT_CMD! --no-color --verbose
-IF !ERRORLEVEL! NEQ 0 goto error
+!GRUNT_CMD! --no-color --verbose
+::IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Select node version
 ::call :SelectNodeVersion
