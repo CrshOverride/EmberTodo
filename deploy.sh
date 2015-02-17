@@ -114,64 +114,18 @@ exitWithMessageOnError "grunt build failed"
 echo Copy web.config to the dist folder
 cp web.config dist\
 
-echo Cleaning the destination
+echo Cleaning the destination via rm -rf $DEPLOYMENT_TARGET\\*
 rm -rf $DEPLOYMENT_TARGET\\*
 
 ##################################################################################################################################
 # Deployment
 # ----------
 
-# echo Handling node.js deployment.
-
-# 3. Install everything
-#npm config set strict-ssl false
-
-# echo Installing Ember CLI
-# eval $NPM_CMD install ember-cli
-# exitWithMessageOnError "ember-cli failed"
-
-# echo Installing Bower
-# eval $NPM_CMD install bower
-# exitWithMessageOnError "bower failed"
-
-# echo Installing PhantomJS
-# eval $NPM_CMD install phantomjs
-# exitWithMessageOnError "phantomjs failed"
-
-# echo Removing cached version of Phantom JS
-# rm -rf "D:\\local\\Temp\\phantomjs\\"
-# exitWithMessageOnError "Failed to remove cached Phantom JS package"
-
-# echo Npm Install Executing
-# eval $NPM_CMD install --no-bin-links
-# exitWithMessageOnError "npm install failed"
-
-# echo Bower Install Executing
-# eval $BOWER_CMD install
-# exitWithMessageOnError "bower install failed"
-
-# echo Ember Build Executing
-# eval $EMBER_CMD build
-# exitWithMessageOnError "ember build failed"
-
 # 4. KuduSync
-# if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-#   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-#   exitWithMessageOnError "Kudu Sync failed"
-# fi
-
-# selectNodeVersion
-
-# echo $NPM_CMD
-# echo $NODE_EXE
-
-# 5. Install npm packages
-# if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
-#   cd "$DEPLOYMENT_TARGET"
-#   eval $NPM_CMD install --production
-#   exitWithMessageOnError "npm failed"
-#   cd - > /dev/null
-# fi
+if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+  exitWithMessageOnError "Kudu Sync failed"
+fi
 
 ##################################################################################################################################
 
