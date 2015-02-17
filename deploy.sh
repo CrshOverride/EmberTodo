@@ -126,15 +126,15 @@ exitWithMessageOnError "failed to clean the target directory"
 # Deployment
 # ----------
 
-# 4. KuduSync
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
   exitWithMessageOnError "Kudu Sync failed"
 fi
 
 ##################################################################################################################################
-
 # Post deployment stub
+# --------------------
+
 if [[ -n "$POST_DEPLOYMENT_ACTION" ]]; then
   POST_DEPLOYMENT_ACTION=${POST_DEPLOYMENT_ACTION//\"}
   cd "${POST_DEPLOYMENT_ACTION_DIR%\\*}"
