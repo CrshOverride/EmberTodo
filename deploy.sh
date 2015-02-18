@@ -41,6 +41,8 @@ PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
 export PATH=$PATH:"$NODE_MODULES_DIR\\phantomjs\\lib\\phantom"
 
+echo $PATH
+
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
 GRUNT_CMD="\"$NODE_EXE\" \"$GRUNT_PATH\""
