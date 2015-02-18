@@ -116,10 +116,8 @@ fi
 # Build
 # -----
 
-mkdir D:\\home\\site\\repository\\node_modules\\phantomjs\\lib\\phantom\\ChangeLog
-
 echo Installing npm modules
-eval $NPM_CMD install --no-bin-links
+eval $NPM_CMD install
 exitWithMessageOnError "npm install failed"
 
 echo Installing bower dependencies
