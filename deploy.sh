@@ -119,6 +119,7 @@ fi
 echo Clean npm cache
 eval $NPM_CMD cache clean
 exitWithMessageOnError "npm cache clean failed"
+rm -rf D:\\local\\Temp\\phantomjs
 
 echo Installing npm modules
 eval $NPM_CMD install
