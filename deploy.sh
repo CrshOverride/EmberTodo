@@ -39,7 +39,7 @@ BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
 GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
 PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
-export PATH=$PATH:"$NODE_MODULES_DIR\\phantomjs\\lib\\phantom"
+export PATH=$PATH:"/d/local/AppData/npm/node_modules/phantomjs/lib/phantom"
 
 echo $PATH
 
@@ -115,6 +115,8 @@ fi
 ##################################################################################################################################
 # Build
 # -----
+
+mkdir D:\\home\\site\\repository\\node_modules\\phantomjs\\lib\\phantom\\ChangeLog
 
 echo Installing npm modules
 eval $NPM_CMD install --no-bin-links
