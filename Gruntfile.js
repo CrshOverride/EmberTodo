@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         }
       },
       test: {
-        command: 'ember test -e ci',
+        command: 'ember test',
         options: {
           stdout: true,
           stdin: false
