@@ -65,8 +65,6 @@ else
   KUDU_SERVICE=true
 fi
 
-npm cache clean
-
 if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   # Install kudu sync
   echo Installing Kudu Sync
@@ -117,6 +115,10 @@ fi
 ##################################################################################################################################
 # Build
 # -----
+
+echo Clean npm cache
+eval $NPM_CMD cache clean
+exitWithMessageOnError "npm cache clean failed"
 
 echo Installing npm modules
 eval $NPM_CMD install
