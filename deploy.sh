@@ -39,6 +39,8 @@ BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
 GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
 PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
+export PATH=$PATH:"$NODE_MODULES_DIR\\phantomjs\\lib\\phantom"
+
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
 GRUNT_CMD="\"$NODE_EXE\" \"$GRUNT_PATH\""
