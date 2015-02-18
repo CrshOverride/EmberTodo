@@ -65,6 +65,8 @@ else
   KUDU_SERVICE=true
 fi
 
+npm cache clean
+
 if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   # Install kudu sync
   echo Installing Kudu Sync
