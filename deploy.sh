@@ -59,6 +59,12 @@ if [[ ! -n "$NEXT_MANIFEST_PATH" ]]; then
   fi
 fi
 
+if [[ -d node_modules ]]; then
+  echo Removing old node_modules folder
+  rm -rf node_modules
+  exitWithMessageOnError "node_modules removal failed"
+fi
+
 if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
   DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
 else
@@ -116,9 +122,9 @@ fi
 # Build
 # -----
 
-echo Clean the project before re-installing
-rm -rf node_modules bower_components dist tmp
-exitWithMessageOnError "clean failed"
+# echo Clean the project before re-installing
+# rm -rf node_modules bower_components dist tmp
+# exitWithMessageOnError "clean failed"
 
 echo Installing npm modules
 eval $NPM_CMD install
