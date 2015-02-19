@@ -25,6 +25,7 @@ exitWithMessageOnError "Missing node.js executable, please install node.js, if a
 
 # Setup
 # -----
+echo Deployment Temp Directory: $DEPLOYMENT_TEMP
 
 SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
 SCRIPT_DIR="${SCRIPT_DIR%/*}"
@@ -40,8 +41,6 @@ GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
 PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
 export PATH=$PATH:"/d/local/AppData/npm/node_modules/phantomjs/lib/phantom"
-
-echo $PATH
 
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
@@ -59,11 +58,11 @@ if [[ ! -n "$NEXT_MANIFEST_PATH" ]]; then
   fi
 fi
 
-if [[ -d node_modules ]]; then
-  echo Removing old node_modules folder
-  rm -Rf node_modules
-  exitWithMessageOnError "node_modules removal failed"
-fi
+# if [[ -d node_modules ]]; then
+#   echo Removing old node_modules folder
+#   rm -Rf node_modules
+#   exitWithMessageOnError "node_modules removal failed"
+# fi
 
 if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
   DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
