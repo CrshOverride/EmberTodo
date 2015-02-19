@@ -29,11 +29,11 @@ exitWithMessageOnError "Missing tar. I figured as much."
 
 # Setup
 # -----
-echo Copy assets to $DEPLOYMENT_TEMP for build.
+echo Copy assets to $DEPLOYMENT_TEMP for build
 tar cf - --exclude=node_modules --exclude=bower_components --exclude=dist --exclude=tmp --exclude=.git . | (cd $DEPLOYMENT_TEMP && tar xvf - )
 exitWithMessageOnError "Failed to create and extract tarball"
 
-echo Switch to the temp directory.
+echo Switch to the temp directory
 cd $DEPLOYMENT_TEMP
 
 if [[ -d node_modules ]]; then
