@@ -25,7 +25,17 @@ exitWithMessageOnError "Missing node.js executable, please install node.js, if a
 
 # Setup
 # -----
-echo Deployment Temp Directory: $DEPLOYMENT_TEMP
+echo Copy assets to $DEPLOYMENT_TEMP for build.
+cp * $DEPLOYMENT_TEMP
+
+echo Switch to the temp directory.
+cd $DEPLOYMENT_TEMP
+
+if [[ -d node_modules ]]; then
+  echo Removing node_modules folder
+  rm -Rf node_modules
+  exitWithMessageOnError "node_modules removal failed"
+fi
 
 SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
 SCRIPT_DIR="${SCRIPT_DIR%/*}"
@@ -149,7 +159,7 @@ cp web.config dist\
 # ----------
 
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_TEMP/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
   exitWithMessageOnError "Kudu Sync failed"
 fi
 
