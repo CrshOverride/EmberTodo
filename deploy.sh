@@ -61,7 +61,7 @@ fi
 
 if [[ -d node_modules ]]; then
   echo Removing old node_modules folder
-  rm -rf node_modules
+  rm -Rf node_modules
   exitWithMessageOnError "node_modules removal failed"
 fi
 
