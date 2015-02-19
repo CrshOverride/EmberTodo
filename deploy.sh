@@ -122,10 +122,6 @@ fi
 # Build
 # -----
 
-# echo Clean the project before re-installing
-# rm -rf node_modules bower_components dist tmp
-# exitWithMessageOnError "clean failed"
-
 echo Installing npm modules
 eval $NPM_CMD install
 exitWithMessageOnError "npm install failed"
