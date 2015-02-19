@@ -26,7 +26,7 @@ exitWithMessageOnError "Missing node.js executable, please install node.js, if a
 # Setup
 # -----
 echo Copy assets to $DEPLOYMENT_TEMP for build.
-cp * $DEPLOYMENT_TEMP
+cp -r . $DEPLOYMENT_TEMP
 
 echo Switch to the temp directory.
 cd $DEPLOYMENT_TEMP
