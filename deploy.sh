@@ -155,9 +155,13 @@ cp web.config dist\
 # Test
 # ----
 
-# echo Executing Tests
-# eval $GRUNT_CMD shell:test --no-color --verbose
-# exitWithMessageOnError "unit tests failed"
+echo Install phantomjs locally as testem does not find global install
+eval $NPM_CMD install phantomjs@1.9.13
+exitWithMessageOnError "local phantomjs install failed"
+
+echo Executing Tests
+eval $GRUNT_CMD shell:test --no-color --verbose
+exitWithMessageOnError "unit tests failed"
 
 ##################################################################################################################################
 # Deployment
