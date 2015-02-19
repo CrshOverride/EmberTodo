@@ -25,8 +25,8 @@ echo $PATH
 hash node 2>/dev/null
 exitWithMessageOnError "Missing node.js executable, please install node.js, if already installed make sure it can be reached from current environment."
 
-hash rsync 2> /dev/null
-exitWithMessageOnError "Missing rsync. I figured as much."
+hash tar 2> /dev/null
+exitWithMessageOnError "Missing tar. I figured as much."
 
 # Setup
 # -----
