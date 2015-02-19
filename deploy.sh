@@ -19,12 +19,11 @@ exitWithMessageOnError () {
 # Prerequisites
 # -------------
 
-echo $PATH
-
 # Verify node.js installed
 hash node 2>/dev/null
 exitWithMessageOnError "Missing node.js executable, please install node.js, if already installed make sure it can be reached from current environment."
 
+# Verify that we have access to tar
 hash tar 2> /dev/null
 exitWithMessageOnError "Missing tar. I figured as much."
 
