@@ -31,7 +31,7 @@ exitWithMessageOnError "Missing tar. I figured as much."
 # Setup
 # -----
 echo Copy assets to $DEPLOYMENT_TEMP for build.
-cp -r . $DEPLOYMENT_TEMP
+tar cf - --exclude=node_modules --exclude=bower_components --exclude=dist --exclude=tmp . | (cd $DEPLOYMENT_TEMP && tar xvf - )
 
 echo Switch to the temp directory.
 cd $DEPLOYMENT_TEMP
