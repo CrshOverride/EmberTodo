@@ -16,13 +16,6 @@ module.exports = function(grunt) {
           stdout: true,
           stdin: false
         }
-      },
-      testemlaunchers: {
-        command: 'testem launchers',
-        options: {
-          stdout: true,
-          stdin: false
-        }
       }
     }
   });
