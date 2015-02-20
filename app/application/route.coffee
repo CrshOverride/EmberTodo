@@ -5,7 +5,8 @@ ApplicationRoute = Ember.Route.extend ApplicationRouteMixin,
   actions:
     error: (error, transition) ->
       Ember.Logger.debug(error)
-      @get('session').invalidate() if error.status is 401
+      Ember.Logger.debug("Error Status Code: #{error.statusCode()}")
+      @get('session').invalidate() if error.statusCode() is 401
 
     authorizationFailed: (error) ->
       Ember.Logger.debug("authorizationFailed")
