@@ -23,11 +23,11 @@ module.exports = function(environment) {
     authorizer: 'simple-auth-authorizer:token',
     routeAfterAuthentication: 'todos',
     routeIfAlreadyAuthenticated: 'todos',
-    crossOriginWhitelist: ['http://angulartododemo.azurewebsites.net']
+    crossOriginWhitelist: ['http://angulartododemo.azurewebsites.net','https://angulartododemo.azurewebsites.net']
   };
 
   ENV['simple-auth-token'] = {
-    serverTokenEndpoint: 'http://angulartododemo.azurewebsites.net/authenticate',
+    serverTokenEndpoint: 'https://angulartododemo.azurewebsites.net/authenticate',
     identificationField: 'email',
     passwordField: 'password',
     tokenPropertyName: 'token',
@@ -36,7 +36,7 @@ module.exports = function(environment) {
   }
 
   ENV['contentSecurityPolicy'] = {
-    'connect-src': "'self' http://angulartododemo.azurewebsites.net",
+    'connect-src': "'self' http://angulartododemo.azurewebsites.net https://angulartododemo.azurewebsites.net",
     'style-src': "'self' 'unsafe-inline'",
     'img-src': "'self' data:",
     'report-uri': '/content-security-policy/report',
