@@ -61,7 +61,8 @@ exitWithMessageOnError "Missing curl. Who would've thunk it?"
 getGithubStatus
 echo $GITHUB_STATUS
 
-while [$GITHUB_STATUS -eq "pending"]; do
+while [ $GITHUB_STATUS -eq "pending" ]
+do
   getGithubStatus
 done
 
