@@ -16,6 +16,21 @@ exitWithMessageOnError () {
   fi
 }
 
+# Variable Setup
+# --------------
+SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
+SCRIPT_DIR="${SCRIPT_DIR%/*}"
+ARTIFACTS=$SCRIPT_DIR/../artifacts
+KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
+NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
+NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
+
+EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
+BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
+GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
+PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
+
 # Prerequisites
 # -------------
 
@@ -31,6 +46,12 @@ exitWithMessageOnError "Missing tar. I figured as much."
 hash curl 2> /dev/null
 exitWithMessageOnError "Missing curl. Who would've thunk it?"
 
+# Wait for GitHub Status
+# ----------------------
+curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
+GITHUB_STATUS='eval $NPM_CMD --eval "var json = require(''./status.json''); console.log(json.state);"'
+echo $GITHUB_STATUS
+
 # Setup
 # -----
 echo Copy assets to $DEPLOYMENT_TEMP for build
@@ -45,19 +66,6 @@ if [[ -d node_modules ]]; then
   rm -Rf node_modules
   exitWithMessageOnError "node_modules removal failed"
 fi
-
-SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
-SCRIPT_DIR="${SCRIPT_DIR%/*}"
-ARTIFACTS=$SCRIPT_DIR/../artifacts
-KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
-NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
-NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
-NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
-
-EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
-BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
-GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
-PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
 
 export PATH=$PATH:"/d/local/AppData/npm/node_modules/phantomjs/lib/phantom"
 
