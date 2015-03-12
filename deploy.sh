@@ -27,6 +27,10 @@ exitWithMessageOnError "Missing node.js executable, please install node.js, if a
 hash tar 2> /dev/null
 exitWithMessageOnError "Missing tar. I figured as much."
 
+#Verify that curl is installed
+hash curl 2> /dev/null
+exitWithMessageOnError "Missing curl. Who would've thunk it?"
+
 # Setup
 # -----
 echo Copy assets to $DEPLOYMENT_TEMP for build
