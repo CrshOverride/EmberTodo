@@ -38,7 +38,7 @@ getGithubStatus () {
   echo Using URL: https://api.github.com/repos/CrshOverride/EmberTodo/commits/$GIT_REVISION/status
 
   curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/$GIT_REVISION/status
-  GITHUB_STATUS=`$NODE_EXE --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
+  GITHUB_STATUS=`"$NODE_EXE" --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
 }
 
 # Prerequisites
