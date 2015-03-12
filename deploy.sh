@@ -5,22 +5,6 @@
 # Version: 0.1.11
 # ----------------------
 
-# Helpers
-# -------
-
-exitWithMessageOnError () {
-  if [ ! $? -eq 0 ]; then
-    echo "An error has occurred during web site deployment."
-    echo $1
-    exit 1
-  fi
-}
-
-getGithubStatus () {
-  curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
-  GITHUB_STATUS=`eval $NPM_CMD --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
-}
-
 # Variable Setup
 # --------------
 SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
@@ -35,6 +19,22 @@ EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
 BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
 GRUNT_PATH="$NODE_MODULES_DIR\\grunt-cli\\bin\\grunt"
 PHANTOMJS_PATH="$NODE_MODULES_DIR\\phantomjs\\bin\\phantomjs"
+
+# Helpers
+# -------
+
+exitWithMessageOnError () {
+  if [ ! $? -eq 0 ]; then
+    echo "An error has occurred during web site deployment."
+    echo $1
+    exit 1
+  fi
+}
+
+getGithubStatus () {
+  curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
+  GITHUB_STATUS=`eval $NODE_EXE --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
+}
 
 # Prerequisites
 # -------------
