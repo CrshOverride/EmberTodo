@@ -33,6 +33,10 @@ exitWithMessageOnError () {
 
 getGithubStatus () {
   GIT_REVISION=`git rev-parse HEAD`
+
+  echo Getting status for revision $GIT_REVISION
+  echo Using URL: https://api.github.com/repos/CrshOverride/EmberTodo/commits/$GIT_REVISION/status
+
   curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/$GIT_REVISION/status
   GITHUB_STATUS=`$NODE_EXE --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
 }
