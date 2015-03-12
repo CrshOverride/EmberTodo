@@ -16,6 +16,11 @@ exitWithMessageOnError () {
   fi
 }
 
+getGithubStatus () {
+  curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
+  GITHUB_STATUS=`eval $NPM_CMD --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
+}
+
 # Variable Setup
 # --------------
 SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
@@ -48,7 +53,12 @@ exitWithMessageOnError "Missing curl. Who would've thunk it?"
 
 # Wait for GitHub Status
 # ----------------------
-curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
-GITHUB_STATUS=`eval $NPM_CMD --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
+getGithubStatus
 echo $GITHUB_STATUS
+
+while [$GITHUB_STATUS -eq "pending"]; do
+  getGithubStatus
+done
+
+echo Made it here!
 
