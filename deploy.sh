@@ -33,7 +33,7 @@ exitWithMessageOnError () {
 
 getGithubStatus () {
   curl -ks -o tmp/status.json https://api.github.com/repos/CrshOverride/EmberTodo/commits/f1988d4fa45824724e56e18bf4c0a4a098565178/status
-  GITHUB_STATUS=`eval $NODE_EXE --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
+  GITHUB_STATUS=`node --eval "var json = require('./tmp/status.json'); console.log(json.state);"`
 }
 
 # Prerequisites
