@@ -12,3 +12,6 @@ test 'it exists', (assert) ->
 
 test 'it broke', (assert) ->
   assert.ok false
+
+test 'it broke again', (assert) ->
+  assert.ok false

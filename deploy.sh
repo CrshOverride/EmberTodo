@@ -61,8 +61,12 @@ if [ "$SCM_WAIT_FOR_CI_BEFORE_BUILD" == "1" ]; then
   do
     sleep 15
     getGithubStatus
-    echo Status is: $GITHUB_STATUS
   done
+
+  if [ "$GITHUB_STATUS" == "failure" ]; then
+    echo "GitHub Status indicates a CI Failure. Aborting the deployment."
+    exit 1
+  fi
 fi
 
 echo Made it here!
