@@ -57,11 +57,11 @@ exitWithMessageOnError "Missing curl. Who would've thunk it?"
 getGithubStatus
 echo $GITHUB_STATUS
 
-while [ "$GITHUB_STATUS" == "pending" ]
+while (( GITHUB_STATUS != "success" && GITHUB_STATUS != "failure" ))
 do
-  getGithubStatus
-  echo Status is still pending
   sleep 15
+  getGithubStatus
+  echo Status is: $GITHUB_STATUS
 done
 
 echo $GITHUB_STATUS
