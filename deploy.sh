@@ -54,7 +54,7 @@ exitWithMessageOnError "Missing curl. Who would've thunk it?"
 
 # Wait for GitHub Status
 # ----------------------
-if [ "$SCM_WAIT_FOR_CI_BEFORE_BUILD" == "1"]; then
+if [ "$SCM_WAIT_FOR_CI_BEFORE_BUILD" == "1" ]; then
   getGithubStatus
 
   while [ "$GITHUB_STATUS" != "success" -a "$GITHUB_STATUS" != "failure" ]
