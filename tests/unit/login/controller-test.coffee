@@ -9,9 +9,3 @@ moduleFor 'controller:login', {
 test 'it exists', (assert) ->
   controller = @subject()
   assert.ok controller
-
-test 'it broke', (assert) ->
-  assert.ok false
-
-test 'it broke again', (assert) ->
-  assert.ok false
