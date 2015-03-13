@@ -57,7 +57,7 @@ exitWithMessageOnError "Missing curl. Who would've thunk it?"
 getGithubStatus
 echo $GITHUB_STATUS
 
-while (( GITHUB_STATUS != "success" && GITHUB_STATUS != "failure" ))
+while [ "$GITHUB_STATUS" != "success" -a "$GITHUB_STATUS" != "failure" ]
 do
   sleep 15
   getGithubStatus
